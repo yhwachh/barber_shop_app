@@ -1,3 +1,11 @@
 {
     "appLanguage": "English"
+
+    "home": "Home",
+    "services": "Services",
+    "aboutUs": "About Us",
+    "prices": "Prices",
+    "hours": "Hours"
+    "contactUS"; "Contact"
+    
 }
