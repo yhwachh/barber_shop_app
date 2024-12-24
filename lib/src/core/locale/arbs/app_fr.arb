@@ -1,3 +1,10 @@
 {
-    "appLanguage": "Français"
+    "appLanguage": "Français",
+
+    "home": "Accueil",
+    "services": "Services",
+    "aboutUs": "À Propos de Nous",
+    "prices": "Tarifs",
+    "hours": "Horaires",
+    "contactUs": "Contact"
 }

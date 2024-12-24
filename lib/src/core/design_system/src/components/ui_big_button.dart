@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../app_ui.dart';
 
 class UIBigButton extends StatelessWidget {
@@ -15,19 +16,20 @@ class UIBigButton extends StatelessWidget {
   final UIItemPosition? iconPosition;
   final BorderSide border;
 
-  const UIBigButton.primary({
-    super.key,
-    required this.label,
-    this.assetIcon,
-    this.onTap,
-    this.disabled = false,
-    this.isBusy = false,
-    this.fullWidth = false,
-    this.iconPosition = UIItemPosition.left,
-  })  : bgColor = UIColorToken.pri800,
+  const UIBigButton.primary(
+      {super.key,
+      required this.label,
+      this.assetIcon,
+      this.disabled = false,
+      this.isBusy = false,
+      this.fullWidth = false,
+      this.iconPosition = UIItemPosition.left,
+      this.onTap})
+      : bgColor = UIColorToken.pri800,
         fgColor = UIColorToken.pri900,
         contentColor = UIColorToken.neu0,
         border = BorderSide.none;
+
   const UIBigButton.secondary(
       {super.key,
       required this.label,
@@ -52,7 +54,7 @@ class UIBigButton extends StatelessWidget {
       this.iconPosition = UIItemPosition.left,
       this.onTap})
       : bgColor = UIColorToken.neu0,
-        fgColor = UIColorToken.pri100,
+        fgColor = UIColorToken.neu0,
         contentColor = UIColorToken.pri800,
         border = const BorderSide(color: UIColorToken.pri700);
 
@@ -78,10 +80,10 @@ class UIBigButton extends StatelessWidget {
         style: ButtonStyles.buttonStyle(
           fullWidth: fullWidth,
           border: border,
-          height: 48,
-          bgColor: bgColor,
+          height: 40,
+          bgColor: Colors.transparent,
           fgColor: fgColor,
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 15),
           radius: BorderRadius.circular(8),
         ),
         onPressed: disabled ? null : onTap,
@@ -102,7 +104,6 @@ class UIBigButton extends StatelessWidget {
                 flex: 3,
                 child: UIText(
                   label,
-                  color: contentColor,
                   overFlow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.kodchasan(),
