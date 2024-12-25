@@ -30,7 +30,7 @@ class UIColorToken {
 	static const Color pri500		= Color(0xff3C9EB4);
 	static const Color pri600		= Color(0xff2F7F91);
 	static const Color pri700		= Color(0xff567F88);
-	static const Color pri800		= Color(0xff054857);
+	static const Color pri800		= Color.fromARGB(255, 83, 48, 3);
 	static const Color pri900		= Color(0xff043844);
 
 	// Neutral
