@@ -11,6 +11,7 @@ class NavMenuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
     return UITap(
       onTap: onTap,
       child: Padding(
@@ -19,7 +20,7 @@ class NavMenuButton extends StatelessWidget {
               style: GoogleFonts.kodchasan(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: isSelected ? UIColorToken.pri800 : UIColorToken.neu400,
+                color: isSelected ? UIColorToken.neu400 : Colors.white,
               ),
               duration: Durations.medium2,
               child: Text(label))),

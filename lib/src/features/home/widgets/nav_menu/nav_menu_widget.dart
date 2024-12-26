@@ -12,13 +12,13 @@ class NavMenuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     final locale = AppLocale.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(child: SizedBox.shrink()),
           Flexible(
               flex: 5,
               child: Row(
@@ -50,7 +50,6 @@ class NavMenuWidget extends StatelessWidget {
                       isSelected: selectedItemIndex == 5),
                 ],
               )),
-          Expanded(child: SizedBox.shrink()),
         ],
       ),
     );
