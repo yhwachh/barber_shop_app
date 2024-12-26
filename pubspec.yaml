@@ -34,6 +34,7 @@ dependencies:
   multiple_result: ^5.1.0
   url_launcher: ^6.1.14
   scroll_to_id: ^1.5.1
+  animated_fab_button_menu: ^0.0.2
 
 dev_dependencies:
   flutter_test:
