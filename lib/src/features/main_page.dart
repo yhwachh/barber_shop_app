@@ -1,5 +1,8 @@
+import 'package:animated_fab_button_menu/animated_fab_button_menu.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:barber_shop_app/src/core/design_system/src/components/ui_scaffold.dart';
+import 'package:barber_shop_app/src/core/design_system/app_ui.dart';
+import 'package:barber_shop_app/src/core/design_system/src/components/book_appointment_button.dart';
+import 'package:barber_shop_app/src/core/locale/l10n.dart';
 import 'package:barber_shop_app/src/features/home/pages/about_us_page.dart';
 import 'package:barber_shop_app/src/features/home/pages/contact_page.dart';
 import 'package:barber_shop_app/src/features/home/pages/home_page.dart';
@@ -48,28 +51,151 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = AppTheme.of(context);
+    final locale = AppLocale.of(context)!;
+    final screenSize = MediaQuery.of(context).size;
+    final isMobileSize = screenSize.width < 1000;
+
     return Scaffold(
-        body: Stack(
-      children: [
-        InteractiveScrollViewer(
-          scrollToId: scrollToId,
-          children: [
-            ScrollContent(id: "0", child: HomePage()),
-            ScrollContent(id: "1", child: AboutUsPage()),
-            ScrollContent(id: "2", child: ServicesPage()),
-            ScrollContent(id: "3", child: PricesPage()),
-            ScrollContent(id: "4", child: HoursPage()),
-            ScrollContent(id: "5", child: ContactPage()),
+        floatingActionButton: isMobileSize
+            ? FabMenu(
+                fabBackgroundColor: theme.colors.bgColor,
+                elevation: 2.0,
+                fabAlignment: Alignment.bottomRight,
+                fabIcon: Icon(
+                  Icons.more_horiz,
+                  color: Colors.white,
+                ),
+                closeMenuButton: Icon(
+                  size: 40,
+                  Icons.arrow_back,
+                  color: theme.colors.bgColor,
+                ),
+                overlayOpacity: 0.5,
+                overlayColor: Colors.white,
+                children: [
+                  MenuItem(
+                      title: locale.home,
+                      style: TextStyle(
+                        color: theme.colors.bgColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        scrollToId.animateTo("0",
+                            duration: Durations.extralong1,
+                            curve: Curves.fastOutSlowIn);
+                        context.router.maybePop();
+                      }),
+                  MenuItem(
+                      title: locale.aboutUs,
+                      style: TextStyle(
+                        color: theme.colors.bgColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        scrollToId.animateTo("1",
+                            duration: Durations.extralong1,
+                            curve: Curves.fastOutSlowIn);
+                        context.router.maybePop();
+                      }),
+                  MenuItem(
+                      title: locale.services,
+                      style: TextStyle(
+                        color: theme.colors.bgColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        scrollToId.animateTo("2",
+                            duration: Durations.extralong1,
+                            curve: Curves.fastOutSlowIn);
+                        context.router.maybePop();
+                      }),
+                  MenuItem(
+                      title: locale.prices,
+                      style: TextStyle(
+                        color: theme.colors.bgColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        scrollToId.animateTo("3",
+                            duration: Durations.extralong1,
+                            curve: Curves.fastOutSlowIn);
+                        context.router.maybePop();
+                      }),
+                  MenuItem(
+                      title: locale.hours,
+                      style: TextStyle(
+                        color: theme.colors.bgColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        scrollToId.animateTo("4",
+                            duration: Durations.extralong1,
+                            curve: Curves.fastOutSlowIn);
+                        context.router.maybePop();
+                      }),
+                  MenuItem(
+                      title: locale.contactUS,
+                      style: TextStyle(
+                        color: theme.colors.bgColor,
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: () {
+                        scrollToId.animateTo("5",
+                            duration: Durations.extralong1,
+                            curve: Curves.fastOutSlowIn);
+                        context.router.maybePop();
+                      }),
+                ],
+              )
+            : null,
+        appBar: AppBar(
+          backgroundColor: theme.colors.bgColor,
+          leading: Padding(
+            padding: const EdgeInsets.only(left: 16, top: 16),
+            child: Text("GK",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold)),
+          ),
+          title: isMobileSize
+              ? null
+              : NavMenuWidget(
+                  selectedItemIndex: pageSelectedIndex,
+                  onChange: (index) {
+                    scrollToId.animateTo(index.toString(),
+                        duration: Durations.extralong1,
+                        curve: Curves.fastOutSlowIn);
+                  },
+                ),
+          actions: [
+            BookAppointmentButton(),
+            SizedBox(
+              width: 10,
+            )
           ],
         ),
-        NavMenuWidget(
-          selectedItemIndex: pageSelectedIndex,
-          onChange: (index) {
-            scrollToId.animateTo(index.toString(),
-                duration: Durations.extralong1, curve: Curves.fastOutSlowIn);
-          },
-        ),
-      ],
-    ));
+        body: Stack(
+          children: [
+            InteractiveScrollViewer(
+              scrollToId: scrollToId,
+              children: [
+                ScrollContent(id: "0", child: HomePage()),
+                ScrollContent(id: "1", child: AboutUsPage()),
+                ScrollContent(id: "2", child: ServicesPage()),
+                ScrollContent(id: "3", child: PricesPage()),
+                ScrollContent(id: "4", child: HoursPage()),
+                ScrollContent(id: "5", child: ContactPage()),
+              ],
+            ),
+          ],
+        ));
   }
 }
