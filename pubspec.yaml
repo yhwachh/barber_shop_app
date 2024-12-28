@@ -35,6 +35,7 @@ dependencies:
   url_launcher: ^6.1.14
   scroll_to_id: ^1.5.1
   animated_fab_button_menu: ^0.0.2
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
