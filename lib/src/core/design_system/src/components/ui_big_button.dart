@@ -100,15 +100,7 @@ class UIBigButton extends StatelessWidget {
             children: [
               if (assetIcon != null && iconPosition == UIItemPosition.left)
                 _buildIcon(),
-              Flexible(
-                flex: 3,
-                child: UIText(
-                  label,
-                  overFlow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.kodchasan(),
-                ),
-              ),
+              Flexible(flex: 3, child: Text(label)),
               if (assetIcon != null && iconPosition == UIItemPosition.right)
                 _buildIcon()
             ],

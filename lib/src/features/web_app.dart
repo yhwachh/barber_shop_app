@@ -1,3 +1,4 @@
+import 'package:barber_shop_app/src/core/design_system/app_ui.dart';
 import 'package:barber_shop_app/src/core/locale/l10n.dart';
 import 'package:barber_shop_app/src/core/providers/widgets/scaffold_messenger_provider.dart';
 import 'package:barber_shop_app/src/core/routing/provider/router_provider.dart';
@@ -18,17 +19,20 @@ class _WebAppState extends ConsumerState<WebApp> {
   Widget build(BuildContext context) {
     final appRouter = ref.read(routerProvider);
     final navigationObserver = ref.watch(navigationObserverProvider);
-    return MaterialApp.router(
-      title: 'Barber Shop App',
-      debugShowCheckedModeBanner: false,
-      scaffoldMessengerKey: ref.read(scaffoldMessengerProvider),
-      routerConfig: appRouter.config(
-        //initialRoutes: [const SplashRoute()],
-        navigatorObservers: () => [navigationObserver],
-        //deepLinkBuilder: DeepLinksServices.navigateDeepLink
+    return AppTheme(
+      data: AppThemeData.light(),
+      child: MaterialApp.router(
+        title: 'Barber Shop App',
+        debugShowCheckedModeBanner: false,
+        scaffoldMessengerKey: ref.read(scaffoldMessengerProvider),
+        routerConfig: appRouter.config(
+          //initialRoutes: [const SplashRoute()],
+          navigatorObservers: () => [navigationObserver],
+          //deepLinkBuilder: DeepLinksServices.navigateDeepLink
+        ),
+        supportedLocales: L10n.all,
+        localizationsDelegates: AppLocale.localizationsDelegates,
       ),
-      supportedLocales: L10n.all,
-      localizationsDelegates: AppLocale.localizationsDelegates,
     );
   }
 }

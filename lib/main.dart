@@ -9,5 +9,10 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
 
     AppRunner.runWebApp();
-  }, (error, stack) {});
+  }, (error, stack) {
+    // Log the error to a tracking system
+    print('Caught an error: $error');
+    print('Stack trace: $stack');
+    // Optionally report to a crash analytics service like Firebase Crashlytics or Sentry
+  });
 }
