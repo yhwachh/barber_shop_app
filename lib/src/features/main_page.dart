@@ -57,6 +57,7 @@ class _MainPageState extends State<MainPage> {
     final isMobileSize = screenSize.width < 1000;
 
     return Scaffold(
+        backgroundColor: theme.colors.bgColor,
         floatingActionButton: isMobileSize
             ? FabMenu(
                 fabBackgroundColor: theme.colors.bgColor,
@@ -156,6 +157,8 @@ class _MainPageState extends State<MainPage> {
               )
             : null,
         appBar: AppBar(
+          shadowColor: Colors.white,
+          elevation: 30,
           backgroundColor: theme.colors.bgColor,
           leading: Padding(
             padding: const EdgeInsets.only(left: 16, top: 16),
