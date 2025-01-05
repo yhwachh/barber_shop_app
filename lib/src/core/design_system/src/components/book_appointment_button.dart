@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:flutter/material.dart';
 
 class BookAppointmentButton extends StatelessWidget {
@@ -7,10 +9,11 @@ class BookAppointmentButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color.fromARGB(255, 165, 151, 146),
+        side: BorderSide(color: Color(0xFFE9C664), width: 2),
+        backgroundColor: Colors.transparent,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.zero),
       ),
-      onPressed: () {},
+      onPressed: () => {},
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

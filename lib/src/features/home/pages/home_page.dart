@@ -1,8 +1,11 @@
+import 'dart:ui';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:barber_shop_app/src/features/home/widgets/nav_menu/nav_menu_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 
 @RoutePage()
 class HomePage extends StatelessWidget {
@@ -13,26 +16,25 @@ class HomePage extends StatelessWidget {
     final screenSize = MediaQuery.of(context).size;
     final isMobileSize = screenSize.width < 1000;
     return SizedBox(
-        height: isMobileSize ? 450 : screenSize.height,
-        child: CarouselSlider(
-          options: CarouselOptions(
-              enlargeCenterPage: true,
-              height: isMobileSize ? 300 : screenSize.height * 0.8,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3)),
-          items: [1, 2, 3, 4, 5].map((i) {
-            return Builder(
-              builder: (BuildContext context) {
-                return Container(
-                    width: screenSize.width * 0.75,
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    child: Image.asset(
-                      'assets/images/barber_shop.webp',
-                      fit: BoxFit.cover,
-                    ));
-              },
-            );
-          }).toList(),
-        ));
+      height: screenSize.height,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          Image.asset("assets/images/outils.jpg", fit: BoxFit.cover),
+          // Le filtre flou appliqué
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+            child: Container(
+              color: Colors.black.withOpacity(0.7), // Transparent
+            ),
+          ),
+          Image.asset(
+            "assets/images/logo.png",
+            height: 50,
+            width: 50,
+          ),
+        ],
+      ),
+    );
   }
 }
