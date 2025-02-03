@@ -23,6 +23,7 @@ class _WebAppState extends ConsumerState<WebApp> {
       data: AppThemeData.light(),
       child: MaterialApp.router(
         title: 'Barber Shop App',
+        locale: Locale("fr"),
         debugShowCheckedModeBanner: false,
         scaffoldMessengerKey: ref.read(scaffoldMessengerProvider),
         routerConfig: appRouter.config(

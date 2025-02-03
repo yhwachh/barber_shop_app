@@ -1,9 +1,14 @@
 import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
+import 'package:barber_shop_app/src/core/design_system/app_ui.dart';
+import 'package:barber_shop_app/src/core/design_system/src/components/home_image.dart';
+import 'package:barber_shop_app/src/core/design_system/src/components/intro_component_page.dart';
+import 'package:barber_shop_app/src/core/design_system/src/components/service_card.dart';
 import 'package:barber_shop_app/src/features/home/widgets/nav_menu/nav_menu_button.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -15,26 +20,68 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     final isMobileSize = screenSize.width < 1000;
-    return SizedBox(
-      height: screenSize.height,
-      child: Stack(
-        fit: StackFit.expand,
-        children: [
-          Image.asset("assets/images/outils.jpg", fit: BoxFit.cover),
-          // Le filtre flou appliqué
-          BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-            child: Container(
-              color: Colors.black.withOpacity(0.7), // Transparent
+    final theme = AppTheme.of(context)!;
+    return Scaffold(
+        backgroundColor: theme.colors.bgColor,
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          children: [
+            SizedBox(
+              height: screenSize.height,
+              width: screenSize.width,
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  HomeImage(image: "assets/images/outils.jpg"),
+                  SvgPicture.asset(
+                    height: 400,
+                    width: 400,
+                    "assets/images/Logo.svg",
+                  ),
+                ],
+              ),
             ),
-          ),
-          Image.asset(
-            "assets/images/logo.png",
-            height: 50,
-            width: 50,
-          ),
-        ],
-      ),
-    );
+            SizedBox(
+              height: 50,
+            ),
+            Center(
+              child: Text(
+                "Services",
+                style: TextStyle(
+                  fontSize: 50,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            SizedBox(
+              height: screenSize.height,
+              width: screenSize.width,
+              child: Stack(
+                children: [
+                  HomeImage(image: "assets/images/face.jpg"),
+                  Column(
+                    children: [
+                      Text(
+                        "Service",
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      ServiceCard(
+                          title: "Haire",
+                          assetIcon: "assets/images/icon_scissors.svg",
+                          description:
+                              "dsdasdasdasdasdddddddddddddfasdfasdfdasdasdasdasdasdas"),
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ));
   }
 }
