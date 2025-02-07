@@ -1,4 +1,8 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:barber_shop_app/src/core/design_system/src/components/intro_component_page.dart';
+import 'package:barber_shop_app/src/core/design_system/src/components/service_card.dart';
+import 'package:barber_shop_app/src/core/locale/l10n.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 @RoutePage()
@@ -7,14 +11,12 @@ class ServicesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocale.of(context)!;
     final screenSize = MediaQuery.of(context).size;
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        minHeight: screenSize.height,
-      ),
-      child: Center(
-        child: Text("Services Page"),
-      ),
-    );
+    return Scaffold(
+        body: ListView(
+      scrollDirection: Axis.vertical,
+      children: [IntroComponentPage(title: locale.services)],
+    ));
   }
 }

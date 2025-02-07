@@ -36,6 +36,11 @@ dependencies:
   scroll_to_id: ^1.5.1
   animated_fab_button_menu: ^0.0.2
   carousel_slider: ^5.0.0
+  cupertino_icons: any
+  firebase_core: 
+  firebase_auth: any
+  firebase_ui_auth: any
+
 
 dev_dependencies:
   flutter_test:
@@ -55,7 +60,6 @@ flutter:
   assets:
     - assets/
     - assets/images/
-    - assets/icons/
   #
   # fonts:
   #   - family: schyler

@@ -2,24 +2,24 @@ part of app_ui;
 
 class UIColorToken {
   final Color bgColor;
+  final Color textColor;
   final Color focusedFieldBorder;
   final Color unfocusedFieldBorder;
   final Color errorFieldBorder;
 
   const UIColorToken({
     required this.bgColor,
+    required this.textColor,
     this.focusedFieldBorder = pri700,
     this.unfocusedFieldBorder = pri300,
     this.errorFieldBorder = neg500,
   });
 
   factory UIColorToken.light() => const UIColorToken(
-        bgColor: Color.fromARGB(255, 81, 80, 80),
-      );
+      bgColor: Color.fromARGB(255, 16, 16, 16), textColor: Color(0xFFE9C664));
 
-  factory UIColorToken.dark() => const UIColorToken(
-        bgColor: pri900,
-      );
+  factory UIColorToken.dark() =>
+      const UIColorToken(bgColor: pri900, textColor: Color(0xFFE9C664));
 
   // Primary
   static const Color pri0 = Color(0xffF8FAFA);
